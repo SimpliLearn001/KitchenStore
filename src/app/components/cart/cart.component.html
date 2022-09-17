@@ -1,0 +1,33 @@
+<div class="container pb-5">
+    <hr>
+    <div class="d-flex justify-content-between">
+      <h2 class="text-primary"><b>Cart</b></h2>
+      <div>
+        <a href="/checkout" class="btn btn-outline-success">Check Out</a>
+        <button class="btn btn-danger ms-3" type="button" (click)="logout()">Log Out</button>
+      </div>
+    </div>
+    <hr>
+  <div class="">
+    <div *ngFor="let cartItem of cart">
+      <div class="card border border-primary shadow mb-2">
+        <div class="card-header bg-primary text-white">
+          <h4>{{ cartItem.title }}</h4>
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <button class="btn btn-danger" (click)="removeCartItem(cartItem.id)">Remove from Cart</button>
+          </div>
+          <div class="collapse" [id]="'P' + cartItem.id">
+            <app-product-details [product]="cartItem"></app-product-details>
+          </div>
+        </div>
+        <div class="card-footer d-flex justify-content-between align-content-center">
+            <div class="text-primary text-end">
+                <p><b>Price : </b><i class="fa fa-indian-rupee-sign"></i> {{cartItem.price}}</p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

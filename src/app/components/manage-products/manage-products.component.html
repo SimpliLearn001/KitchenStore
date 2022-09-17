@@ -1,0 +1,93 @@
+<div class="container pb-5">
+    <hr>
+    <div class="d-flex justify-content-between">
+      <h2 class="text-primary"><b>Manage Products</b></h2>
+      <div id="add-product">
+        <a  class="btn btn-warning" type="button" routerLink="add-product"><i class="fa fa-plus-square"></i> Add Product</a>
+        <button class="btn btn-danger ms-3" type="button" (click)="logout()">Log Out</button>
+      </div>
+    </div>
+    <hr>
+    <router-outlet></router-outlet>
+  <div class="">
+    <div *ngFor="let product of products">
+      <div class="card border border-primary shadow mb-2">
+        <div [id]="'Card' + product.id">
+            <div class="card-header bg-primary text-white">
+            <h4>{{ product.title }}</h4>
+            </div>
+            <div class="card-body">
+                <div class="text-primary bg-primary bg-opacity-10 p-2 border border-primary rounded-2 mt-2">
+                    <dl>
+                        <dt>Description</dt>
+                        <dd>
+                        {{ product.description }}
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>Type</dt>
+                        <dd>{{ product.type }}</dd>
+                    </dl>
+                    <dl>
+                        <dt>Rating</dt>
+                        <dd>{{ product.rating }} <i class="fa fa-star"></i></dd>
+                    </dl>
+                    <dl>
+                        <dt>Price</dt>
+                        <dd><i class="fa fa-rupee-sign"></i> {{product.price}}</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <form [id]="'Form' + product.id" (ngSubmit)="updateProduct(product.id)" hidden>
+            <div class="card-header bg-primary text-white">
+                <h4><input type="text" class="form-control" [id]="'title'+product.id"></h4>
+                </div>
+                <div class="card-body">
+                    <div class="text-primary bg-primary bg-opacity-10 p-2 border border-primary rounded-2 mt-2">
+                        <dl>
+                            <dt>Description</dt>
+                            <dd>
+                                <input type="text" class="form-control" [id]="'description'+product.id">
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>Type</dt>
+                            <dd>
+                                <input type="text" class="form-control"[id]="'type'+product.id" >
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>Rating</dt>
+                            <dd>
+                                <input type="text" class="form-control" [id]="'rating'+product.id"> <i class="fa fa-star"></i>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>Price</dt>
+                            <dd>
+                                <i class="fa fa-rupee-sign"></i> <input type="text" class="form-control" [id]="'price'+product.id">
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            <div class="text-center">
+                <button  class="btn btn-warning" type="submit"><i class="fa fa-arrow-circle-up"></i> Update Product</button>
+            </div>
+        </form>
+
+        <div class="card-footer d-flex justify-content-between align-content-center">
+            <div [id]="'CancelEdit' + product.id" hidden>
+                <button  class="btn btn-warning" type="button" (click)="cancelEditProduct(product.id)"><i class="fa fa-cancel"></i> Cancel Edit</button>
+            </div>
+            <div [id]="'Edit' + product.id">
+                <button  class="btn btn-warning" type="button" (click)="editProduct(product)"><i class="fa fa-pen-to-square"></i> Edit Product</button>
+            </div>
+            <div [id]="'Remove' + product.id">
+              <button  class="btn btn-danger" type="button" (click)="removeProduct(product.id)"><i class="fa fa-circle-minus"></i> Remove Product</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

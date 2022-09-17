@@ -1,0 +1,49 @@
+<div class="container pb-5">
+    <hr>
+    <div class="d-flex justify-content-between">
+        <h2 class="text-primary"><b>Products</b></h2>
+        <div>
+          <a href="/cart" class="btn btn-outline-success">View Cart</a>
+          <button class="btn btn-danger ms-3" type="button" (click)="logout()">Log Out</button>
+        </div>
+    </div>
+    <hr>
+  <div class="">
+    <div *ngFor="let product of products">
+      <div class="card border border-primary shadow mb-2">
+        <div class="card-header bg-primary text-white">
+          <h4>{{ product.title }}</h4>
+        </div>
+        <div class="card-body">
+          <button
+            class="btn btn-info"
+            type="button"
+            data-bs-toggle="collapse"
+            [attr.data-bs-target]="'#' +'P'+ product.id"
+            aria-expanded="false"
+            [attr.aria-controls]="'P' + product.id"
+          >
+            Product Details <i class="fa fa-caret-down"></i>
+          </button>
+
+          <!-- Collapsed content -->
+          <div class="collapse" [id]="'P' + product.id">
+            <app-product-details [product]="product"></app-product-details>
+          </div>
+        </div>
+        <!-- <app-product-details [product]="product"></app-product-details> -->
+        <div class="card-footer d-flex justify-content-between align-content-center">
+            <div [id]="'Add' + product.id">
+                <button  class="btn btn-warning" type="button" (click)="addProductToCart(product)"><i class="fa fa-plus-circle"></i> Add to Cart</button>
+            </div>
+            <div [id]="'Remove' + product.id" hidden>
+              <button  class="btn btn-danger" type="button" (click)="removeProductFromCart(product)"><i class="fa fa-circle-minus"></i> Remove from Cart</button>
+            </div>
+            <div class="text-primary text-end">
+                <p><b>Price : </b><i class="fa fa-indian-rupee-sign"></i> {{product.price}}</p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

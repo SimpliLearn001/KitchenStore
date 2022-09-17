@@ -1,0 +1,31 @@
+<div class="container pb-5">
+    <hr>
+      <div class="d-flex justify-content-between">
+        <h2 class="text-primary"><b>Payment</b></h2>
+        <button class="btn btn-danger ms-3" type="button" (click)="logout()">Log Out</button>
+      </div>
+    <hr>
+    <div class="shadow shadow-lg w-75 mx-auto border-3 border-primary rounded-3 bg-primary bg-opacity-10 p-3">
+      <h3>Amount : <i class="fa fa-indian-rupee-sign"></i> {{amount}}</h3>
+      <hr>
+      <h3>Payment Method</h3>
+      <form (ngSubmit)="savePaymentMethod()" [formGroup]="paymentForm">
+      <ul class="list-unstyled">
+        <li>
+          <input type="radio" name="paymentMethod" value="gpay" formControlName="paymentMethod"> Google Pay
+        </li>
+        <li>
+          <input type="radio" name="paymentMethod" value="paytm" formControlName="paymentMethod"> Paytm
+        </li>
+        <li>
+          <input type="radio" name="paymentMethod" value="phonepe" formControlName="paymentMethod"> PhonePe
+        </li>
+        <li>
+          <input type="radio" name="paymentMethod" value="cash" formControlName="paymentMethod"> Cash On Delivery
+        </li>
+      </ul>
+      <input type="submit" class="btn btn-success mt-5" value="Confirm Payment" id="confirmPayment">
+      </form>
+
+    </div>
+</div>

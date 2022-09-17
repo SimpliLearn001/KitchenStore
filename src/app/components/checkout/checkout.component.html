@@ -1,0 +1,43 @@
+<div class="container pb-5">
+  <hr />
+  <div class="d-flex justify-content-between">
+    <h2 class="text-primary"><b>Check Out</b></h2>
+    <div>
+      <button type="button" class="btn btn-outline-success" (click)="createOrder()">Proceed to Payment</button>
+      <button class="btn btn-danger ms-3" type="button" (click)="logout()">Log Out</button>
+    </div>
+  </div>
+  <hr />
+  <div class="shadow shadow-lg w-75 mx-auto border-3 border-primary rounded-3 bg-primary bg-opacity-10 p-3">
+    <table class="table table-primary table-hover table-bordered text-primary">
+      <thead>
+        <tr class="text-center">
+          <th>Products</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cartItem of cart">
+          <td>{{ cartItem.title }}</td>
+          <td class="text-end"><i class="fa fa-indian-rupee-sign"></i> {{ cartItem.price }}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="text-end text-danger">
+          <td><b>Total Amount</b></td>
+          <td><b><i class="fa fa-indian-rupee-sign"></i> {{amount}}</b></td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <form (ngSubmit)="saveAddress()" [formGroup]="addressForm">
+      <div class="form-group">
+        <label for="address">Address</label>
+        <textarea name="address" id="address" rows="3" class="form-control" style="resize:none;" formControlName="address" ></textarea>
+        <p id="showSavedAddress" hidden></p>
+      </div>
+      <input type="submit" class="btn btn-primary mt-5" value="Save Address" id="addressButton">
+    </form>
+  </div>
+
+</div>

@@ -1,0 +1,48 @@
+<div class="container mt-5">
+    <div class="card border-primary border-3 w-50 mx-auto p-5">
+  <form (ngSubmit)="submit()" [formGroup]="adminForm">
+    <div class="input-group d-flex justify-content-center my-3">
+        <span class="input-group-text"><i class="fa fa-user"></i></span>
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            name="admin"
+            id="admin"
+            placeholder="Enter Admin"
+            formControlName="admin"
+          />
+          <label for="admin">Admin</label>
+        </div>
+      </div>
+      <div *ngIf="admin?.touched && admin?.invalid" class="alert alert-danger">
+        <p>Admin name is required</p>
+      </div>
+      <div class="input-group d-flex justify-content-center my-3">
+        <span class="input-group-text"><i class="fa fa-lock"></i></span>
+        <div class="form-floating">
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            id="password"
+            placeholder="Enter Password"
+            formControlName="password"
+          />
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <div *ngIf="password?.touched && password?.invalid" class="alert alert-danger">
+        <p>Password is required</p>
+      </div>
+      <hr>
+      <div class="text-center my-2">
+        <input
+          type="submit"
+          value="Submit"
+          class="btn btn-primary btn-lg"
+        />
+      </div>
+  </form>
+    </div>
+</div>

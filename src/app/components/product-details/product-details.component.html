@@ -1,0 +1,16 @@
+<div *ngIf="product" class="text-primary bg-primary bg-opacity-10 p-2 border border-primary rounded-2 mt-2">
+  <dl>
+    <dt>Description</dt>
+    <dd>
+      {{ product.description }}
+    </dd>
+  </dl>
+  <dl>
+    <dt>Type</dt>
+    <dd>{{ product.type }}</dd>
+  </dl>
+  <dl>
+    <dt>Rating</dt>
+    <dd>{{ product.rating }} <i class="fa fa-star"></i></dd>
+  </dl>
+</div>

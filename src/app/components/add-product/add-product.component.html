@@ -1,0 +1,45 @@
+<div class="card border border-primary shadow mb-2">
+<form [formGroup]="addProductForm" (ngSubmit)="addProduct()">
+    <div class="card-header bg-primary text-white">
+        <h4>Title</h4>
+        <h4><input type="text" class="form-control" formControlName="title"></h4>
+        <div *ngIf="title?.touched && title?.invalid" class="alert alert-danger">
+            <p>title is required</p>
+        </div>
+    </div>
+        <div class="card-body">
+            <div class="text-primary bg-primary bg-opacity-10 p-2 border border-primary rounded-2 mt-2">
+                <dl>
+                    <dt>Description</dt>
+                    <dd>
+                        <input type="text" class="form-control" formControlName="description">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>Type</dt>
+                    <dd>
+                        <input type="text" class="form-control" formControlName="type">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>Rating</dt>
+                    <dd>
+                        <input type="text" class="form-control" formControlName="rating"> <i class="fa fa-star"></i>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>Price</dt>
+                    <dd>
+                        <i class="fa fa-rupee-sign"></i> <input type="text" class="form-control" formControlName="price">
+                        <div *ngIf="price?.touched && price?.invalid" class="alert alert-danger">
+                            <p>Price is required</p>
+                         </div>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    <div class="text-center mb-2">
+        <button  class="btn btn-warning" type="submit"><i class="fa fa-arrow-circle-up"></i> Add Product</button>
+    </div>
+</form>
+</div>
